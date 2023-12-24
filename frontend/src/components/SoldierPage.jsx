@@ -101,7 +101,7 @@ const SoldierPage = () => {
    useEffect(() => {
       const fetchData = async () => {
          try {
-            const response = await fetch('https://fog-test-round1-backend.vercel.app/api/soldier')
+            const response = await fetch('https://fog-round-1-backend.vercel.app/api/soldier')
             const data = await response.json()
             setSoldierData(data.data)
          } catch (error) {
