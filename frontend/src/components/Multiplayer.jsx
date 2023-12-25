@@ -57,7 +57,7 @@ const Multiplayer = () => {
                </div>
             </div>
          ))}
-      </div>q
+      </div>
    )
 }
 
