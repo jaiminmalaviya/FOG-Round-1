@@ -3,6 +3,7 @@ import cors from 'cors'
 
 // Import soldierData
 import soldierData from './soldierData.js'
+import multiplayerData from './multiplayerData.js'
 
 const app = express()
 app.use(cors())
@@ -25,6 +26,26 @@ app.get('/api/soldier', (req, res) => {
       })
    } catch (error) {
       console.error('Error retrieving soldier data:', error.message)
+      res.status(500).json({
+         success: false,
+         message: 'Internal server error',
+      })
+   }
+})
+
+app.get('/api/multiplayer', (req, res) => {
+   try {
+      if (!multiplayerData) {
+         throw new Error('Multiplayer data not found')
+      }
+
+      res.json({
+         success: true,
+         data: multiplayerData,
+         message: 'Multiplayer data received successfully.',
+      })
+   } catch (error) {
+      console.error('Error handling multiplayer data:', error.message)
       res.status(500).json({
          success: false,
          message: 'Internal server error',
